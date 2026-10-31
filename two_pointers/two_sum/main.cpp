@@ -5,35 +5,32 @@
 #include <string>
 #include <unordered_map>
 
-class MinStack
+std::vector<int> twoSum(std::vector<int> &numbers, int target)
 {
-public:
-    MinStack()
+    int l = 0;
+    int r = numbers.size() - 1;
+    std::vector<int> res{};
+    while (true)
     {
+        int sum = numbers[l] + numbers[r];
+        if (sum > target)
+        {
+            r--;
+        }
+        else if (sum < target)
+        {
+            l++;
+        }
+        else
+        {
+            return std::vector{l + 1, r + 1};
+        }
     }
-
-    void push(int val)
-    {
-    }
-
-    void pop()
-    {
-    }
-
-    int top()
-    {
-    }
-
-    int getMin()
-    {
-    }
-
-private:
-    std::stack<int> stack{};
-};
+}
 
 int main()
 {
-    MinStack minstack{};
-    std::string s = "([{}])";
+    std::vector<int> nums{1, 2, 3, 4};
+    int target = 3;
+    auto res = twoSum(nums, target);
 }
